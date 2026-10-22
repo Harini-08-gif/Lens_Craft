@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lens_Craft - Discover Visual Inspirations</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Branded Header -->
+  <header class="site-header">
+    <div class="logo-container">
+      <h1 class="app-title">Lens_Craft</h1>
+      <p class="tagline">Crafting your visual lens to the world.</p>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- Search Control Form -->
+    <section class="search-section">
+      <form id="search-form" class="search-form">
+        <label for="search-input" class="sr-only">Search images</label>
+        <div class="input-wrapper">
+          <input 
+            type="search" 
+            id="search-input" 
+            placeholder="Search high-res images..." 
+            required 
+          />
+          <button type="button" id="clear-btn" class="clear-btn" aria-label="Clear search input">✕</button>
+        </div>
+        <button type="submit" id="search-btn" class="submit-btn">Search</button>
+      </form>
+
+      <!-- Original Feature 1: Category Suggestion Chips -->
+      <div class="category-chips">
+        <span class="chip-label">Suggestions:</span>
+        <button class="chip">Nature</button>
+        <button class="chip">Architecture</button>
+        <button class="chip">Minimalism</button>
+        <button class="chip">Technology</button>
+      </div>
+    </section>
+
+    <!-- Original Feature 2: Result Count & Status Placeholder -->
+    <div id="status-container" class="status-container">
+      <p id="result-count" class="result-count">Search to see results</p>
+    </div>
+
+    <!-- Empty Results Container -->
+    <section id="results" class="results-grid"></section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
