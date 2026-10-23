@@ -1,5 +1,4 @@
-// LenCraft - Script Initialization (Part 1 Scaffold)
-// Behaviour logic and API fetching will be implemented in Part 2.
+// LenCraft - Script Initialization (Part 3 Polish)
 // Select DOM elements
 const form = document.getElementById("search-form");
 const input = document.getElementById("search-input");
@@ -15,6 +14,9 @@ form.addEventListener("submit", async (event) => {
 
   // Task 4: Ignore empty searches
   if (!query) return;
+
+  // 1. LOADING STATE: Display a loading message immediately before fetching
+  resultsContainer.innerHTML = '<p class="loading-state">Searching...</p>';
 
   // Task 2: Build API URL using encodeURIComponent
   const url =
@@ -33,10 +35,19 @@ form.addEventListener("submit", async (event) => {
     const data = await response.json();
     const items = data.query ? Object.values(data.query.pages) : [];
 
-    // Task 3: Render results
+    // 2. EMPTY STATE: Handle when 0 results are returned
+    if (items.length === 0) {
+      resultsContainer.innerHTML = `<p class="empty-state">No results found for "${query}". Try another search.</p>`;
+      return;
+    }
+
+    // Task 3: Render results when data is present
     renderResults(items, query);
+
   } catch (error) {
+    // 3. ERROR STATE: Handle network or API failure
     console.error("Error fetching data:", error);
+    resultsContainer.innerHTML = '<p class="error-state">Something went wrong. Please try again.</p>';
   }
 });
 
